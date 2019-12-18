@@ -35,4 +35,8 @@ public class CategoryService {
         //pagefromJPA是查询出的所有数据，navigatePages=5
         return new Page4Navigator<>(pageFromJPA, navigatePages);
     }
+
+    public void add(Category bean) {
+        categoryDAO.save(bean);
+    }
 }

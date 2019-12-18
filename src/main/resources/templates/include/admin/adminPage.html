@@ -12,6 +12,7 @@
 	      <a  href="#nowhere" @click="jump('pre')">‹</a>
 	    </li>		    
 
+		  //i从1开始
 		<li  v-for="i in pagination.navigatepageNums">
 			<a href="#nowhere" @click="jumpByNumber(i-1)" >
 				{{i}}

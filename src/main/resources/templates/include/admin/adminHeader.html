@@ -87,6 +87,7 @@
 	}
     //跳转函数
     function jump(page,vue){
+		//vue.pagination.first是Page4Navigator里面的变量Boolean类型，用JPA自行判断是否为首页
 		if('first'== page && !vue.pagination.first)
 			vue.list(0);
 		
