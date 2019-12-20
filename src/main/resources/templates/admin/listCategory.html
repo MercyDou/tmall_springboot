@@ -42,9 +42,23 @@
                     formData.append("name", this.bean.name);
                     axios.post(url,formData).then(function(response){
                         vue.list(0);
-                        vue.bean = { id: 0, name: '', hp: '0'};
+                        vue.bean = {};
                         $("#categoryPic").val('');
                         vue.file = null;
+                    });
+                },
+                deleteBean: function (id) {
+                    if (!checkDeleteLink()) {
+                        return;
+                    }
+                    var url = this.uri + "/" + id;
+                    axios.delete(url).then(function (response) {
+                        if (0 != response.data.length) {
+                            alert(response.data);
+                        }
+                        else {
+                            vue.list(0);
+                        }
                     });
                 },
                 getFile: function (event) {
@@ -97,7 +111,7 @@
                     <a :href="'admin_category_edit?id=' + bean.id "><span class="glyphicon glyphicon-edit"></span></a>
                 </td>
                 <td>
-                    <a href="#nowhere"  @click="deleteBean(bean.id)"><span class="   glyphicon glyphicon-trash"></span></a>
+                    <a href="#nowhere"  @click="deleteBean(bean.id)"><span class="glyphicon glyphicon-trash"></span></a>
                 </td>
             </tr>
             </tbody>
