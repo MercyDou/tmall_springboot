@@ -27,7 +27,7 @@ public class PropertyController {
         return bean;
     }
 
-    @GetMapping("/properties")
+    @PostMapping("/properties")
     public Object add(@RequestBody Property bean) throws Exception {
         propertyService.add(bean);
         return bean;
