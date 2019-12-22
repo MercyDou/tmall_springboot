@@ -26,6 +26,15 @@ public class Product {
     private float promotePrice;
     private int stock;
     private Date createDate;
+    private ProductImage firstProductImage;
+
+    public ProductImage getFirstProductImage() {
+        return firstProductImage;
+    }
+
+    public void setFirstProductImage(ProductImage firstProductImage) {
+        this.firstProductImage = firstProductImage;
+    }
 
     public void setCategory(Category category) {
         this.category = category;
