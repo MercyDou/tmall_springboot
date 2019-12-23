@@ -6,7 +6,6 @@ import com.tmall.pojo.ProductImage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.security.PublicKey;
 import java.util.List;
 
 @Service
@@ -38,7 +37,7 @@ public class ProductImageService {
         return productImageDAO.findByProductAndTypeOrderByIdDesc(product, type_detail);
     }
 
-    public void setFirstProductImage(Product product) {
+    public void setFirstProductImages(Product product) {
         List<ProductImage> singleImages = listSingleProductImage(product);
         if (!singleImages.isEmpty()) {
             product.setFirstProductImage(singleImages.get(0));
@@ -50,7 +49,7 @@ public class ProductImageService {
 
     public void setFirstProductImages(List<Product> products) {
         for (Product product : products) {
-            setFirstProductImage(product);
+            setFirstProductImages(product);
         }
     }
 

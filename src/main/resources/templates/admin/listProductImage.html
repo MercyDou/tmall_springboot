@@ -29,10 +29,24 @@
                     var url = "products/" + pid;
                     axios.get(url).then(function (response) {
                         vue.product = response.data;
+                        // 传category放到面包屑导航中
                         vue.category = vue.product.category;
                     });
                 },
-                addSingele: function () {
+                listSingles: function (start) {
+                    var url = "products/" + pid + "/"+this.uri + "?type=single";
+                    axios.get(url).then(function (response) {
+                        vue.singleProductImages = response.data;
+                    });
+                },
+                listDetails: function (start) {
+                    var url = "products/" + pid +"/"+ this.uri + "?type=detail";
+                    axios.get(url).then(function (response) {
+                        vue.detailProductImages = response.data;
+                    });
+
+                },
+                addSingle: function () {
                     if (!checkEmpty(this.singleFile, "单个产品图片")) {
                         return;
                     }
@@ -51,7 +65,7 @@
                     }
                     var url = this.uri + "?type=detail&pid=" + pid;
                     var formData = new FormData();
-                    form.append("image", this.detailFile);
+                    formData.append("image", this.detailFile);
 
                     axios.post(url, formData).then(function (response) {
                         vue.listDetails();
@@ -66,7 +80,7 @@
                     var url = this.uri + "/" + id;
                     axios.delete(url).then(function (response) {
                         vue.listSingles();
-                        vue.listDetailes();
+                        vue.listDetails();
                     });
                 },
                 getSingleFile: function (event) {
@@ -74,7 +88,7 @@
                 },
                 getDetailFile: function (event) {
                     this.DetailFile = event.target.files[0];
-                }
+                },
             }
         });
 
