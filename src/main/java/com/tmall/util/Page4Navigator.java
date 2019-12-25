@@ -21,8 +21,7 @@ public class Page4Navigator<T> {
     int[] navigatepageNums;
 
     public Page4Navigator() {
-        //这个空的分页是为了 Redis 从 json格式转换为 Page4Navigator 对象而专门提供的
-        //将pagination从json格式转换为该对象
+        //构造函数，这个空的分页是为了 Redis 从 json格式转换为 Page4Navigator 对象而专门提供的
     }
 
     public Page4Navigator(Page<T> pageFromJPA, int navigatePages) {
