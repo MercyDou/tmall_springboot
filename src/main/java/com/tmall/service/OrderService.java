@@ -40,6 +40,16 @@ public class OrderService {
 
     private void removeOrderFromOrderItem(Order order) {
         List<OrderItem> orderItems = order.getOrderItems();
+        for (OrderItem oi : orderItems) {
+            oi.setOrder(null);
+        }
+    }
 
+    public Order get(int oid) {
+        return orderDAO.findOne(oid);
+    }
+
+    public void update(Order bean) {
+        orderDAO.save(bean);
     }
 }

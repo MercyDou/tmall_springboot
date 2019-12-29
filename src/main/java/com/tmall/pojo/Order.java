@@ -4,13 +4,12 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.tmall.service.OrderService;
 
 import javax.persistence.*;
-import javax.xml.crypto.Data;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "order_")
-@JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
+@JsonIgnoreProperties({ "handler","hibernateLazyInitializer" })
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,8 +18,6 @@ public class Order {
 
     @ManyToOne
     @JoinColumn(name = "uid")
-    private int uid;
-
     private User user;
 
     private String OrderCode;
@@ -29,8 +26,8 @@ public class Order {
     private String receiver;
     private String mobile;
     private String userMessage;
-    private Data createDate;
-    private Data payDate;
+    private Date createDate;
+    private Date payDate;
     private Date confirmDate;
     private Date deliveryDate;
     private String status;
@@ -98,11 +95,11 @@ public class Order {
         this.id = id;
     }
 
-    public Data getCreateDate() {
+    public Date getCreateDate() {
         return createDate;
     }
 
-    public Data getPayDate() {
+    public Date getPayDate() {
         return payDate;
     }
 
@@ -112,10 +109,6 @@ public class Order {
 
     public Date getDeliveryDate() {
         return deliveryDate;
-    }
-
-    public int getUid() {
-        return uid;
     }
 
     public List<OrderItem> getOrderItems() {
@@ -170,7 +163,7 @@ public class Order {
         this.confirmDate = confirmDate;
     }
 
-    public void setCreateDate(Data createDate) {
+    public void setCreateDate(Date createDate) {
         this.createDate = createDate;
     }
 
@@ -190,7 +183,7 @@ public class Order {
         this.orderItems = orderItems;
     }
 
-    public void setPayDate(Data payDate) {
+    public void setPayDate(Date payDate) {
         this.payDate = payDate;
     }
 
@@ -210,7 +203,4 @@ public class Order {
         this.total = total;
     }
 
-    public void setUid(int uid) {
-        this.uid = uid;
-    }
 }

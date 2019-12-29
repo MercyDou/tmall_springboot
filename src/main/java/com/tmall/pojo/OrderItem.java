@@ -1,13 +1,12 @@
 package com.tmall.pojo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import org.hibernate.criterion.Order;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "orderItem")
-@JsonIgnoreProperties({"handler", "hibernateLazyInitializer"})
+@JsonIgnoreProperties({ "handler","hibernateLazyInitializer" })
 public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
