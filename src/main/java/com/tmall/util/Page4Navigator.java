@@ -23,7 +23,8 @@ public class Page4Navigator<T> {
     public Page4Navigator() {
         //构造函数，这个空的分页是为了 Redis 从 json格式转换为 Page4Navigator 对象而专门提供的
     }
-
+    //pageFromJpa就是一个Page对象，navigatePages是分页栏要展示的有几个数字[2,3,4]即为3，一般为5，用Page4Navigator是为了对page进行分装
+    //实现额外的功能，例如：将分页栏的分页数展示再上面。
     public Page4Navigator(Page<T> pageFromJPA, int navigatePages) {
         this.pageFromJPA = pageFromJPA;
         this.navigatePages = navigatePages;
