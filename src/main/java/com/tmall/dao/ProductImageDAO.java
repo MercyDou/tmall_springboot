@@ -8,5 +8,4 @@ import java.util.List;
 
 public interface ProductImageDAO extends JpaRepository<ProductImage, Integer> {
     public List<ProductImage> findByProductAndTypeOrderByIdDesc(Product product, String type);
-
 }
