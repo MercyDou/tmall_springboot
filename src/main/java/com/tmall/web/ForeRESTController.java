@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.HtmlUtils;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @RestController
@@ -49,5 +50,20 @@ public class ForeRESTController {
         user.setPassword(password);
         userService.add(user);
         return Result.success();
+    }
+
+    @PostMapping("/forelogin")
+    public Object login(@RequestBody User userParam, HttpSession session) {
+        String name = HtmlUtils.htmlEscape(userParam.getName());
+        System.out.println("查看传入的name:"+name);
+        User user = userService.get(name, userParam.getPassword());
+        if (null == user) {
+            String message = "账号或密码错误";
+            return Result.fail(message);
+        }
+        else {
+            session.setAttribute("user", user);
+            return Result.success();
+        }
     }
 }
