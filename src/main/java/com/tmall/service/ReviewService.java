@@ -20,7 +20,7 @@ public class ReviewService {
     }
 
     public List<Review> list(Product product) {
-        List<Review> reviews = reviewDAO.findByProductOOrderByIdDesc(product);
+        List<Review> reviews = reviewDAO.findByProductOrderByIdDesc(product);
         return reviews;
     }
 
