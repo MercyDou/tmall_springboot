@@ -120,9 +120,20 @@ public class ForeRESTController {
                     Collections.sort(c.getProducts(), new ProductPriceComparator());
                     break;
                 case "all":
-                    Collections.sort(c.getProducts(),new ProductAllComparator());
+                    Collections.sort(c.getProducts(), new ProductAllComparator());
             }
         }
         return c;
+    }
+
+    @PostMapping("foresearch")
+    public Object search(String keyword) {
+        if (null == keyword) {
+            keyword = "";
+        }
+        List<Product> ps = productService.search(keyword, 0, 20);
+        productImageService.setFirstProductImages(ps);
+        productService.setSaleAndReviewNumber(ps);
+        return ps;
     }
 }
