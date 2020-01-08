@@ -4,6 +4,7 @@ import com.tmall.dao.OrderItemDAO;
 import com.tmall.pojo.Order;
 import com.tmall.pojo.OrderItem;
 import com.tmall.pojo.Product;
+import com.tmall.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -70,6 +71,10 @@ public class OrderItemService {
             }
         }
         return result;
+    }
+
+    public List<OrderItem> listByUser(User user) {
+        return orderItemDAO.findByUserAndOrderIsNull(user);
     }
 
 }
